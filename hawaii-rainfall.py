@@ -165,7 +165,10 @@ cursor = engine.execute("""
 SELECT Measurement.station, Measurement.date, Measurement.prcp, Station.name,
 Station.latitude, Station.latitude, Station.elevation
 FROM Measurement
-INNER JOIN Station ON Measurement.station = Station.station order by Measurement.prcp desc;
+INNER JOIN Station ON Measurement.station = Station.station 
+where Measurement.date > "2017-05-19"
+and Measurement.date < "2017-05-22"
+order by Measurement.prcp desc;
 """)
 print("Station, Date, Precipitation, Name, Lat, Lon, Elevation")
 for i in cursor:
