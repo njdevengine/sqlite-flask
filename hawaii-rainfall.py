@@ -90,3 +90,9 @@ df.describe()
 cursor = engine.execute('select count(*) from Station')
 for i in cursor:
     print(i[0])
+    
+# What are the most active stations? (i.e. what stations have the most rows)?
+# List the stations and the counts in descending order.
+cursor = engine.execute('select count(*),station from Measurement group by station order by count(*) desc')
+for i in cursor:
+    print(i)
