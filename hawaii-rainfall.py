@@ -82,3 +82,6 @@ chart.xaxis.set_major_formatter(mdates.DateFormatter('%b %y'))
 legend = mpatches.Patch(color='blue', label='Precipitation')
 plt.legend(handles=[legend])
 plt.show()
+
+# Use Pandas to calculate the summary statistics for the precipitation data
+df.describe()
