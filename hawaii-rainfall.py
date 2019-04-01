@@ -173,3 +173,29 @@ order by Measurement.prcp desc;
 print("Station, Date, Precipitation, Name, Lat, Lon, Elevation")
 for i in cursor:
     print(i)
+    
+# calculate the daily normals for your trip
+# push each tuple of calculations into a list called `normals`
+# Set the start and end date of the trip
+# Use the start and end date to create a range of dates
+# Stip off the year and save a list of %m-%d strings
+# Loop through the list of %m-%d strings and calculate the normals for each date
+normals = []
+start = "05-19"
+end = "05-22"
+dates = []
+dates.append(start)
+dates.append(end)
+for i in range (20,22):
+    dates.append("05-"+str(i))
+
+for i in dates:
+    normals.append(daily_normals(i))
+dates
+
+# Load the previous query results into a Pandas DataFrame and add the `trip_dates` range as the `date` index
+
+df3 = pd.DataFrame(np.array([normals[0][0], normals[1][0], normals[2][0], normals[3][0]]),
+                   columns=['min', 'avg', 'max'])
+df3['date']=dates
+df3
