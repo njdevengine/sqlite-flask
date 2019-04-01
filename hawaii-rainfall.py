@@ -114,3 +114,19 @@ for i in cursor:
     print("Mean Temp:")
     print(i)
     print("\n")
+    
+# Choose the station with the highest number of temperature observations.
+results = []
+cursor = engine.execute('select count(tobs),station from Measurement group by station order by count(*) desc limit 1')
+for i in cursor:
+    print("Station with most tobs:")
+    print(i)
+    print("\n")
+# Query the last 12 months of temperature observation data for this station and plot the results as a histogram
+cursor = engine.execute('select * from Measurement where station="USC00519281" and date >"2016-08-18" order by date desc')
+for i in cursor:
+    results.append(i)
+
+df2 = pd.DataFrame(results)
+df2.columns = ["ID","Station","Date","Precipitation","Temp"]
+df2["Date"] = pd.to_datetime(df2["Date"])
