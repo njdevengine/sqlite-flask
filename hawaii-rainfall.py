@@ -135,3 +135,26 @@ hist = df2["Temp"].hist(bins=10)
 legend = mpatches.Patch(color='blue', label='temp observations')
 plt.legend(handles=[legend])
 plt.show()
+
+# Use your previous function `calc_temps` to calculate the tmin, tavg, and tmax 
+# for your trip using the previous year's data for those same dates.
+# Plot the results from your previous query as a bar chart. 
+# Use "Trip Avg Temp" as your Title
+# Use the average temperature for the y value
+# Use the peak-to-peak (tmax-tmin) value as the y error bar (yerr)
+print("MIN, MEAN, MAX")
+print(calc_temps('2017-05-19', '2017-05-22'))
+data = calc_temps('2017-05-19', '2017-05-22')
+y = data[0][1]
+error = (data[0][2])-(data[0][0])
+
+fig, ax = plt.subplots()
+
+rects1 = ax.bar([1], y, 1,
+                alpha=1, color='orange',
+                yerr=error)
+
+ax.set_ylabel('Temp (F)')
+ax.set_title('Trip Avg Temp')
+ax.set_xticks([0])
+plt.show()
