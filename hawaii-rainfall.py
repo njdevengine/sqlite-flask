@@ -96,3 +96,21 @@ for i in cursor:
 cursor = engine.execute('select count(*),station from Measurement group by station order by count(*) desc')
 for i in cursor:
     print(i)
+
+# Using the station id from the previous query, calculate the lowest temperature recorded, 
+# highest temperature recorded, and average temperature most active station?
+cursor = engine.execute("select station,min(tobs) from Measurement where station='USC00519281'")
+for i in cursor:
+    print("Minimum Temp:")
+    print(i)
+    print("\n")
+cursor = engine.execute("select station,max(tobs) from Measurement where station='USC00519281'")
+for i in cursor:
+    print("Maximum Temp:")
+    print(i)
+    print("\n")
+cursor = engine.execute("select station,round(avg(tobs), 2) from Measurement where station='USC00519281'")
+for i in cursor:
+    print("Mean Temp:")
+    print(i)
+    print("\n")
