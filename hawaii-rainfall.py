@@ -130,3 +130,8 @@ for i in cursor:
 df2 = pd.DataFrame(results)
 df2.columns = ["ID","Station","Date","Precipitation","Temp"]
 df2["Date"] = pd.to_datetime(df2["Date"])
+
+hist = df2["Temp"].hist(bins=10)
+legend = mpatches.Patch(color='blue', label='temp observations')
+plt.legend(handles=[legend])
+plt.show()
