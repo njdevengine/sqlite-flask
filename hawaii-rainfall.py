@@ -199,3 +199,7 @@ df3 = pd.DataFrame(np.array([normals[0][0], normals[1][0], normals[2][0], normal
                    columns=['min', 'avg', 'max'])
 df3['date']=dates
 df3
+
+# Plot the daily normals as an area plot with `stacked=False`
+df3.plot(kind='area', stacked=False, alpha=0.5,
+        title='Min / Avg / Max')
