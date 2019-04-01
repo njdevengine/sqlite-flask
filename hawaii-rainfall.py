@@ -85,3 +85,8 @@ plt.show()
 
 # Use Pandas to calculate the summary statistics for the precipitation data
 df.describe()
+
+# Design a query to show how many stations are available in this dataset?
+cursor = engine.execute('select count(*) from Station')
+for i in cursor:
+    print(i)
