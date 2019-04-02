@@ -162,10 +162,10 @@ plt.show()
 # Calculate the rainfall per weather station for your trip dates using the previous year's matching dates.
 # Sort this in descending order by precipitation amount and list the station, name, latitude, longitude, and elevation
 cursor = engine.execute("""
-SELECT Measurement.station, Measurement.date, Measurement.prcp, Station.name,
+select Measurement.station, Measurement.date, Measurement.prcp, Station.name,
 Station.latitude, Station.latitude, Station.elevation
-FROM Measurement
-INNER JOIN Station ON Measurement.station = Station.station 
+from Measurement
+inner join Station on Measurement.station = Station.station 
 where Measurement.date > "2017-05-19"
 and Measurement.date < "2017-05-22"
 order by Measurement.prcp desc;
