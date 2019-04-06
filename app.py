@@ -1,3 +1,4 @@
+# how to kill the app: kill -9 `lsof -i:5000 -t`
 #import dependencies
 import numpy as np
 import sqlalchemy
